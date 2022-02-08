@@ -1,4 +1,4 @@
-name: HinaRobot Wf 
+name: Alokamj Wf 
 
 on:
     push:
@@ -29,18 +29,18 @@ jobs:
        - name: cloning repo
          continue-on-error: true
          run: |
-           git clone -b main https://Dark-Senpai:${{ secrets.GH_TOKEN }}@github.com/Parth-Senpai/AE_ENCODER.git 
-       - name: Running Hina Bot
-         timeout-minutes: 300
+           git clone -b main https://${{ secrets.GitHubName }}:${{ secrets.GH_TOKEN }}@github.com/DragonPower84/encobykai.git aloka 
+       - name: Running Aloka Bot
+         timeout-minutes: 295
          continue-on-error: true
          run: |
-           cd AE_ENCODER 
+           cd aloka
            docker build -t compressor . && docker run compressor
            
        - name: Loop workflow
          continue-on-error: true
          run: |
-           git clone https://${{ secrets.GH_TOKEN }}@github.com/${GITHUB_REPOSITORY} loop
+           git clone https://${{ secrets.GitHubName }}:${{ secrets.GH_TOKEN }}@github.com/${GITHUB_REPOSITORY} loop
            cd loop || exit 1
            echo $(( RANDOM - ( RANDOM % RANDOM ) )) > looper.txt
            git add looper.txt
